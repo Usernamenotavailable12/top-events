@@ -1,4 +1,3 @@
-
 <div id="root"></div>
 <style>
     @font-face {
@@ -512,7 +511,12 @@
                             {oddsData.map(odd => (
                                 <span key={odd.id} className="odd-item">
                                     <p>{odd.name}</p>
-                                    <p>{Math.round(odd.price * 100) / 100}</p>
+                                    <p>{
+                                        (() => {
+                                            const price = Math.round(odd.price * 100) / 100;
+                                            return price.toFixed(2);
+                                        })()
+                                    }</p>
                                 </span>
                             ))}
                         </div>
@@ -532,7 +536,7 @@
                     <div className="card-s-block">
                         <p className="card-date-text">{formatDate(event.startDate)}</p>
                         <span className="card-name-block">
-                            <p>{categories.find(categorie => categorie.id === event.catId)?.name || ''}, {champs.find(champ => champ.id === event.champId)?.name.slice(0,25) + '.' || ''}</p>
+                            <p>{categories.find(categorie => categorie.id === event.catId)?.name || ''}, {champs.find(champ => champ.id === event.champId)?.name.slice(0, 25) + '.' || ''}</p>
                         </span>
                         <p className="card-score-text">+{event?.sc || ''}</p>
                     </div>
@@ -547,7 +551,12 @@
                         {oddsData.map(odd => (
                             <span key={odd.id} className="odd-item">
                                 <p>{odd.name}</p>
-                                <p>{Math.round(odd.price * 100) / 100}</p>
+                                <p>{
+                                    (() => {
+                                        const price = Math.round(odd.price * 100) / 100;
+                                        return price.toFixed(2);
+                                    })()
+                                }</p>
                             </span>
                         ))}
                     </div>
