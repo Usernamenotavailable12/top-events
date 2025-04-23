@@ -35,7 +35,7 @@
         position: absolute;
         top: 68px;
         white-space: nowrap;
-        max-width: 110px;
+        max-width: 120px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -278,7 +278,6 @@
         margin: 0;
     }
 
-
     .odds-row {
         display: flex;
         gap: 12px;
@@ -296,6 +295,15 @@
     #app-container {
         background-color: transparent;
         min-height: 100vh;
+    }
+
+    /* Logo styling for competitor names */
+    .competitor-logo {
+        width: 34px;
+        height: 34px;
+        margin-right: 8px;
+        vertical-align: middle;
+        display: inline-block;
     }
 
     @media (max-width: 768px) {
@@ -374,6 +382,10 @@
             font-style: normal;
             font-weight: 400;
             line-height: 12px;
+            max-width: 135px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
         .card-score-text {
@@ -437,6 +449,12 @@
             font-weight: 700;
             line-height: 16px;
         }
+
+        .competitor-logo {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+        }
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
@@ -495,9 +513,21 @@
                         <div className="card-s-th-container">
                             <div className="card-s-block">
                                 <h3 title={competitorf?.name || ''}>
+                                    <img
+                                        src={`https://sb2jerseys-altenar2.biahosted.com/63/l/${competitorf?.id}`}
+                                        alt={`${competitorf?.name || ''} logo`}
+                                        className="competitor-logo"
+                                        onError={(e) => { e.target.style.display = 'none'; }}
+                                    />
                                     {competitorf?.name || ''}
                                 </h3>
                                 <h3 title={competitorsec?.name || ''}>
+                                    <img
+                                        src={`https://sb2jerseys-altenar2.biahosted.com/63/l/${competitorsec?.id}`}
+                                        alt={`${competitorsec?.name || ''} logo`}
+                                        className="competitor-logo"
+                                        onError={(e) => { e.target.style.display = 'none'; }}
+                                    />
                                     {competitorsec?.name || ''}
                                 </h3>
                             </div>
@@ -530,6 +560,12 @@
                 <div className="card-block-container">
                     <div className="card-f-block">
                         <h3 title={competitors.find(competitor => competitor.id === event.competitorIds[0])?.name || ''}>
+                            <img
+                                src={`https://sb2jerseys-altenar2.biahosted.com/63/l/${event.competitorIds[0]}`}
+                                alt={`${competitors.find(competitor => competitor.id === event.competitorIds[0])?.name || ''} logo`}
+                                className="competitor-logo"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
                             {competitors.find(competitor => competitor.id === event.competitorIds[0])?.name || ''}
                         </h3>
                     </div>
@@ -542,6 +578,12 @@
                     </div>
                     <div className="card-th-block">
                         <h3 title={competitors.find(competitor => competitor.id === event.competitorIds[1])?.name || ''}>
+                            <img
+                                src={`https://sb2jerseys-altenar2.biahosted.com/63/l/${event.competitorIds[1]}`}
+                                alt={`${competitors.find(competitor => competitor.id === event.competitorIds[1])?.name || ''} logo`}
+                                className="competitor-logo"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
                             {competitors.find(competitor => competitor.id === event.competitorIds[1])?.name || ''}
                         </h3>
                     </div>
